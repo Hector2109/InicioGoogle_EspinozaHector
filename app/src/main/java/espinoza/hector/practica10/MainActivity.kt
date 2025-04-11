@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             } catch (e: GetCredentialException) {
                 Toast.makeText(
                     applicationContext,
-                    "Error al obtener la credencial " + e,
+                    " " + e,
                     Toast.LENGTH_LONG
                 ).show()
             }

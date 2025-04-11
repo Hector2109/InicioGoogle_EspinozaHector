@@ -1,6 +1,7 @@
 package espinoza.hector.practica10
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +17,15 @@ class Bienvenida : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val correo = intent.getStringExtra("Correo")
+        val proveedor = intent.getStringExtra("Proveedor")
+
+        val correoTv: TextView = findViewById(R.id.evCorreo)
+        val proveedorTv: TextView = findViewById(R.id.evProveedpr)
+
+
+
+
     }
 }
