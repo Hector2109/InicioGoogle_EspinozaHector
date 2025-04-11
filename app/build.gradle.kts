@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "espinoza.hector.practica10"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -49,7 +49,6 @@ dependencies {
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
 
-    implementation(libs.androidx.ui.android)
     implementation(libs.androidx.activity.compose)
 
     implementation(libs.androidx.core.ktx)

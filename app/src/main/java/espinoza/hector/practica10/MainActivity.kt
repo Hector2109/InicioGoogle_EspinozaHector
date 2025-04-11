@@ -26,6 +26,7 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingExcept
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
@@ -38,14 +39,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        verificar_sesion_abierta()
+
+        val correoEditText: EditText = findViewById(R.id.etCorreo)
+        val passEditText: EditText = findViewById(R.id.etPassword)
+        val btnLogin: Button = findViewById(R.id.btn_login)
+        val btnLoginGoogle: Button = findViewById(R.id.btnLoginGoogle)
+
+        btnLogin.setOnClickListener {
+            val correo = correoEditText.text.toString()
+            val password = passEditText.text.toString()
+
+            if (correo.isNotEmpty() && password.isNotEmpty()) {
+                login_firebase(correo, password)
+            } else {
+                Toast.makeText(this, "Por favor completa los campos", Toast.LENGTH_SHORT).show()
+            }
         }
 
-
+        // Botón de login con Google
+        btnLoginGoogle.setOnClickListener {
+            loginGoogle()
+        }
 
     }
 
@@ -77,11 +95,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    @SuppressLint("CoroutineCreationDuringComposition")
-    @Composable
-    fun loginGoogle(){
-        val context = LocalContext.current
-        val coroutineScope: CoroutineScope = rememberCoroutineScope()
+    fun loginGoogle() {
+        val context = this
+        val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
         val credentialManager = CredentialManager.create(context)
 
         val signInWithGoogleOption: GetSignInWithGoogleOption =
@@ -100,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                     context = context,
                 )
                 handleSignIn(result)
-            }catch (e: GetCredentialException){
+            } catch (e: GetCredentialException) {
                 Toast.makeText(
                     applicationContext,
                     "Error al obtener la credencial " + e,

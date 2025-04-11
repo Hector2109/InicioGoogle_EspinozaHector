@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1011872271322",
+    "project_id": "practica10-6a0ce",
+    "storage_bucket": "practica10-6a0ce.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011872271322:android:1fb3975b1684a0c2f84ee3",
+        "android_client_info": {
+          "package_name": "espinoza.hector.practica10"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011872271322-30620mhuvb5jt4it1s686vbe317864aq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfjKo3m1cbEmq_I6ZXUNFdlCGdEJ2yV1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011872271322-30620mhuvb5jt4it1s686vbe317864aq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
